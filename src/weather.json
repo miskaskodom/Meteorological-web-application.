@@ -1,1 +1,35 @@
-{"coord":{"lon":30.5167,"lat":50.4333},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}],"base":"stations","main":{"temp":280.39,"feels_like":280.39,"temp_min":278.52,"temp_max":281.24,"pressure":1017,"humidity":80},"visibility":10000,"wind":{"speed":0.45,"deg":85,"gust":2.24},"clouds":{"all":100},"dt":1709568306,"sys":{"type":2,"id":2003742,"country":"UA","sunrise":1709526912,"sunset":1709567059},"timezone":7200,"id":703448,"name":"Kyiv","cod":200}
+{
+  "coord": { "lon": 30.5167, "lat": 50.4333 },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 280.39,
+    "feels_like": 280.39,
+    "temp_min": 278.52,
+    "temp_max": 281.24,
+    "pressure": 1017,
+    "humidity": 80
+  },
+  "visibility": 10000,
+  "wind": { "speed": 0.45, "deg": 85, "gust": 2.24 },
+  "clouds": { "all": 100 },
+  "dt": 1709568306,
+  "sys": {
+    "type": 2,
+    "id": 2003742,
+    "country": "UA",
+    "sunrise": 1709526912,
+    "sunset": 1709567059
+  },
+  "timezone": 7200,
+  "id": 703448,
+  "name": "Kyiv",
+  "cod": 200
+}

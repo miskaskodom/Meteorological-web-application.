@@ -2,8 +2,8 @@ import React from "react";
 
 const Content = (prop) => {
   return (
-    <div className="w-full h-full px-4 font-mono pt-3 bg-slate-50 ">
-      <div className=" font-bold text-7xl drop  bg-[#00665E] text-white rounded-3xl text-center  shadow-lg shadow-[#1D766F]">
+    <div className="w-full h-full px-4 font-mono pt-3 bg-slate-50">
+      <div className="font-bold text-7xl drop h-20  bg-[#00665E] text-white rounded-3xl text-center items-center  shadow-lg shadow-[#1D766F]">
         {prop.data.name}{" "}
       </div>
       <div className="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1   gap-9 pt-8 ">
