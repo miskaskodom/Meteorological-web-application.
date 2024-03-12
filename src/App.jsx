@@ -10,7 +10,7 @@ function App() {
  
   
   const [cords, setCords] = useState({ lon: 0, lat: 0 });
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [finnal, setFinnal] = useState([]);
   const [location, setLocation] = useState("");
   const [weatherOption, setWeatherOption] = useState({
@@ -24,6 +24,7 @@ function App() {
   const serchLocation = () => {
     axios.get(url).then((response) => {
       setData(response.data);
+  
     });
   };
 
@@ -36,6 +37,9 @@ function App() {
         setData(response.data);
       });
   };
+
+
+ 
   
   useEffect(() => {
     const storedSettings = JSON.parse(localStorage.getItem('Settings'));

@@ -1,12 +1,11 @@
 import React from "react";
+import WeatherSettingBlock from "./UI/WeatherSettingBlock";
 
 const SettingsList = ({ weatherOption, setWeatherOption }) => {
   return (
     <div className="text-center w-96 h-72 p-6 justify-between flex flex-col  font-mono text-3xl items-center">
       <h1 className=" text-5xl font-bold ">Settings</h1>
-
-      <div
-        className={` cursor-pointer bg-[#00665E] hover:bg-[#00665ed0] flex font-mono flex-row items-center font-bold text-2xl p-2 rounded-3xl text-white shadow-md shadow-[#1D766F] `}
+      <WeatherSettingBlock
         onClick={() =>
           setWeatherOption({
             ...weatherOption,
@@ -14,11 +13,11 @@ const SettingsList = ({ weatherOption, setWeatherOption }) => {
           })
         }
       >
-        {weatherOption.presure ? "Add" : "Remove"} presure
-      </div>
+        {" "}
+        {weatherOption.presure ? "Add" : "Remove"} presure{" "}
+      </WeatherSettingBlock>
 
-      <div
-        className={` cursor-pointer bg-[#00665E] hover:bg-[#00665ed0] flex font-mono flex-row items-center font-bold text-2xl p-2 rounded-3xl text-white shadow-md shadow-[#1D766F] `}
+      <WeatherSettingBlock
         onClick={() =>
           setWeatherOption({
             ...weatherOption,
@@ -27,10 +26,9 @@ const SettingsList = ({ weatherOption, setWeatherOption }) => {
         }
       >
         {weatherOption.minTemp ? "Add" : "Remove"} min temperature
-      </div>
+      </WeatherSettingBlock>
 
-      <div
-        className={` cursor-pointer bg-[#00665E] hover:bg-[#00665ed0] flex font-mono flex-row items-center font-bold text-2xl p-2 rounded-3xl text-white shadow-md shadow-[#1D766F] `}
+      <WeatherSettingBlock
         onClick={() =>
           setWeatherOption({
             ...weatherOption,
@@ -38,8 +36,8 @@ const SettingsList = ({ weatherOption, setWeatherOption }) => {
           })
         }
       >
-        {weatherOption.maxTemp ? "Add" : "Remove"}  max temperature
-      </div>
+        {weatherOption.maxTemp ? "Add" : "Remove"} max temperature
+      </WeatherSettingBlock>
     </div>
   );
 };
