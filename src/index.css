@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 @layer components {
-   .dive{ @apply bg-[#00665E] flex font-mono flex-row items-center font-bold text-2xl p-2 rounded-3xl text-white;} 
+   .dive{ @apply bg-[#00665E] hover:bg-[#00665ed0] flex font-mono flex-row items-center font-bold text-2xl p-2 rounded-3xl text-white shadow-md shadow-[#1D766F];} 
 }
