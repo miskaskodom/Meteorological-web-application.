@@ -62,11 +62,7 @@ function WeatherAppPage() {
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("City", JSON.stringify(finnal));
-  }, [finnal]);
-
-  useEffect(() => {
+useEffect(() => {
     setIsInformationLoading(true);
     
     navigator.geolocation.getCurrentPosition(
@@ -92,12 +88,21 @@ function WeatherAppPage() {
         }
       }
     );
-    const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${cords.latitude}&lon=${cords.longitude}&appid=9eecc962315d7d019a25cb291a4e5b3a`;
-    axios.get(currentUrl).then((response) => {
-      setData(response.data);
-    });
+   
     setIsInformationLoading(false);
   }, []);
+
+  useEffect(() => {
+ axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.latitude}&lon=${cords.longitude}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
+      setData(response.data);
+    });
+  },[cords])
+
+  useEffect(() => {
+    localStorage.setItem("City", JSON.stringify(finnal));
+  }, [finnal]);
+
+  
 
   return (
     <>
