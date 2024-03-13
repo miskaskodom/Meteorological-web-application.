@@ -73,9 +73,8 @@ useEffect(() => {
     
     navigator.geolocation.getCurrentPosition(
       function (position) {
-     const {latitude, longitude } = position.coords;
-
-     setCords({latitude,longitude});
+        const { latitude, longitude } = position.coords;
+          setCords({latitude,longitude});
       },
       function (error) {
         switch (error.code) {
@@ -94,9 +93,15 @@ useEffect(() => {
         }
       }
     );
-    whatLocation();
+    console.log('first')
     setIsInformationLoading(false);
   }, []);
+
+  useEffect(()=>{
+    console.log('second')
+    console.log(cords)
+    whatLocation()
+  },[])
 
 
   useEffect(() => {
