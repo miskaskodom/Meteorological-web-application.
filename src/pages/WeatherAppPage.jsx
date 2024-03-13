@@ -36,7 +36,7 @@ function WeatherAppPage() {
   };
 
   const whatLocation = () => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.latitude}&lon=${cords.longitude}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.lat}&lon=${cords.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
       setData(response.data);
     });
   }
@@ -79,6 +79,7 @@ useEffect(() => {
        };
     
           setCords(newUserPos)
+          whatLocation()
       },
       function (error) {
         switch (error.code) {
@@ -97,15 +98,11 @@ useEffect(() => {
         }
       }
     );
-    console.log('first')
+  
     setIsInformationLoading(false);
   }, []);
 
-  useEffect(()=>{
-    console.log('second')
-    console.log(cords)
-    whatLocation()
-  },[])
+
 
 
   useEffect(() => {
