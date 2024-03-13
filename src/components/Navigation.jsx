@@ -1,44 +1,44 @@
 import React from "react";
 import ModalSettings from "./ModalSettings.jsx";
-import Setting from "../assets/icons8-settings-50.png";
+import gear from "../assets/icons8-settings-50.png";
+import mark from "../assets/icons8-location-50.png";
 
 import { useState } from "react";
-import SettingsList from "./SettingsList.jsx";
 import CityList from "./CityList.jsx";
 import AddCity from "./AddCity.jsx";
+import { Link } from "react-router-dom";
 
 const Navigation = ({
   serchLocation,
   finnal,
   location,
-  data,
   setFinnal,
   setLocation,
   currentCity,
-  weatherOption,
-  setWeatherOption,
 }) => {
   const [open, setOpen] = useState({ first: false, second: false });
   const [searchQuary, setSearchQuary] = useState("");
 
-  const searchedCity = finnal.filter(city => {
-      return city.toUpperCase().includes(searchQuary.toUpperCase())
-    })
-  
+  const searchedCity = finnal.filter((city) => {
+    return city.toUpperCase().includes(searchQuary.toUpperCase());
+  });
 
   const addNewCity = () => {
-    switch( finnal.includes(location)|| location == ''){
+    switch (
+      finnal.includes(location[0].toUpperCase() + location.slice(1)) ||
+      location == ""
+    ) {
       case true:
         setLocation("Already saved !");
-      setTimeout(() => {
-        setLocation("");
-      }, 1500);
-      break;
+        setTimeout(() => {
+          setLocation("");
+        }, 1500);
+        break;
       case false:
         serchLocation();
-        setFinnal([...finnal, location]);
-      setLocation("");
-      break;
+        setFinnal([...finnal, location[0].toUpperCase() + location.slice(1)]);
+        setLocation("");
+        break;
     }
   };
 
@@ -47,12 +47,13 @@ const Navigation = ({
   };
 
   return (
-    <div className=" w-full h-20 flex flex-row items-center justify-between bg-slate-200 px-4">
+    <div className=" w-full h-20 flex flex-row items-center justify-between bg-slate-200 px-4 ">
       <button
         className="dive "
         onClick={() => setOpen({ ...open, first: true })}
       >
-        <p>Add city </p>
+        <img src={mark} />
+        <p className="p-2">Add city </p>
       </button>
 
       <ModalSettings
@@ -68,12 +69,13 @@ const Navigation = ({
               addNewCity={addNewCity}
             />
 
-            <div className="pt-4">
+            <div className=" pt-4">
               <input
+                className="dive w-96"
                 value={searchQuary}
                 onChange={(e) => setSearchQuary(e.target.value)}
                 type="text"
-                placeholder="Search..."
+                placeholder="Search saved location..."
               />
             </div>
             <CityList
@@ -85,22 +87,10 @@ const Navigation = ({
         </>
       </ModalSettings>
 
-      <button
-        className="dive"
-        onClick={() => setOpen({ ...open, second: true })}
-      >
+      <Link className="dive" to="/setting">
         <p>Settings </p>
-        <img src={Setting} />
-      </button>
-      <ModalSettings
-        open={open.second}
-        onClose={() => setOpen({ ...open, second: false })}
-      >
-        <SettingsList
-          weatherOption={weatherOption}
-          setWeatherOption={setWeatherOption}
-        />
-      </ModalSettings>
+        <img src={gear} />
+      </Link>
     </div>
   );
 };
