@@ -6,7 +6,13 @@ import axios from "axios";
 import Loader from "../components/UI/Loader.jsx";
 
 function WeatherAppPage() {
-  const [cords, setCords] = useState(null);
+  const [cords, setCords] = useState(() =>{
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const { latitude, longitude } = position.coords;
+          setCords({latitude,longitude});
+      }
+  )});
   const [data, setData] = useState([]);
   const [finnal, setFinnal] = useState([]);
   const [location, setLocation] = useState("");
@@ -68,34 +74,6 @@ function WeatherAppPage() {
     }
   }, []);
 
-useEffect(() => {
-    setIsInformationLoading(true);
-    
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        const { latitude, longitude } = position.coords;
-          setCords({latitude,longitude});
-      },
-      function (error) {
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            console.log("user denied the request for Geolocation.");
-            break;
-          case error.POSITION_UNAVAILABLE:
-            console.log("Location information is unavailable.");
-            break;
-          case error.TIMEOUT:
-            console.log("The request to get user location timed out.");
-            break;
-          case error.UNKNOWN_ERROR:
-            console.log("An unknown error occurred.");
-            break;
-        }
-      }
-    );
-    console.log('first')
-    setIsInformationLoading(false);
-  }, []);
 
   useEffect(()=>{
     console.log('second')
