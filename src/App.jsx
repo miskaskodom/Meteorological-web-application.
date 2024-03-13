@@ -7,7 +7,7 @@ import Setting from "./pages/Settings";
 
 function App() {
   return (
-    <HashRouter basename="/Meteorological-web-application./">
+    <HashRouter >
       <Routes>
         <Route path="*" element={<StartPage />} />
         <Route basename='/Meteorological-web-application./setting' path="/setting" element={<Setting />} />
