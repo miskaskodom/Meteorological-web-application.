@@ -7,8 +7,7 @@ import Setting from "./pages/Settings";
 
 function App() {
   return (
-    <BrowserRouter basename="/Meteorological-web-application.
-    ">
+    <BrowserRouter>
       <Routes>
         <Route path="*" element={<StartPage />} />
         <Route path="/setting" element={<Setting />} />
