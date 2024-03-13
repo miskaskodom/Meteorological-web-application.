@@ -36,6 +36,7 @@ function WeatherAppPage() {
   };
 
   const whatLocation = () => {
+    console.log(cords)
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.lat}&lon=${cords.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
       setData(response.data);
     });
