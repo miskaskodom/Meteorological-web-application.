@@ -6,7 +6,7 @@ import axios from "axios";
 import Loader from "../components/UI/Loader.jsx";
 
 function WeatherAppPage() {
-  const [cords, setCords] = useState({ lon: 0, lat: 0 });
+  const [cords, setCords] = useState(null);
   const [data, setData] = useState([]);
   const [finnal, setFinnal] = useState([]);
   const [location, setLocation] = useState("");
@@ -71,8 +71,9 @@ function WeatherAppPage() {
     
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        setCords((cords.lat = position.coords.latitude));
-        setCords((cords.lon = position.coords.longitude));
+     const {latitude, longitude } = position.coords;
+
+     setCords({latitude,longitude});
       },
       function (error) {
         switch (error.code) {
@@ -91,7 +92,7 @@ function WeatherAppPage() {
         }
       }
     );
-    const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${cords.lat}&lon=${cords.lon}&appid=9eecc962315d7d019a25cb291a4e5b3a`;
+    const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${cords.latitude}&lon=${cords.longitude}&appid=9eecc962315d7d019a25cb291a4e5b3a`;
     axios.get(currentUrl).then((response) => {
       setData(response.data);
     });
