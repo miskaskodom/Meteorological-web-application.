@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter basename="/Meteorological-web-application./">
       <Routes>
         <Route path="*" element={<StartPage />} />
-        <Route path="/setting" element={<Setting />} />
+        <Route basename='/Meteorological-web-application./setting' path="/setting" element={<Setting />} />
         <Route path="/mainapp" element={<WeatherAppPage />} />
         <Route path="/aboutapp" element={<AboutApp />} />
       </Routes>
