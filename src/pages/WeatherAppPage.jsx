@@ -35,6 +35,12 @@ function WeatherAppPage() {
       });
   };
 
+  const whatLocation = () => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.latitude}&lon=${cords.longitude}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
+      setData(response.data);
+    });
+  }
+
   useEffect(() => {
     const storedSettings = JSON.parse(localStorage.getItem("Settings"));
     if (storedSettings) {
@@ -88,15 +94,10 @@ useEffect(() => {
         }
       }
     );
-   
+    whatLocation();
     setIsInformationLoading(false);
   }, []);
 
-  useEffect(() => {
- axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.latitude}&lon=${cords.longitude}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
-      setData(response.data);
-    });
-  },[cords])
 
   useEffect(() => {
     localStorage.setItem("City", JSON.stringify(finnal));
