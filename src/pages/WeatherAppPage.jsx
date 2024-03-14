@@ -61,22 +61,33 @@ function WeatherAppPage() {
     }
   }, []);
 
-  
+  useEffect(() => {
+    const database = JSON.parse(localStorage.getItem("Data"));
+    if (database) {
+      setData(database);
+    }
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem("Data", JSON.stringify(data));
+  }, [data]);
 
-
-useEffect(() => {
+  useEffect(() => {
     setIsInformationLoading(true);
     navigator.geolocation.getCurrentPosition(
       function (position) {
-       const  newUserPos = {
-        lat: position.coords.latitude,
-        long: position.coords.longitude,
-       };
-          axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${newUserPos.lat}&lon=${newUserPos.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
-      setData(response.data);
-      setUserLocation(response.data);
-    });
+        const newUserPos = {
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        };
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${newUserPos.lat}&lon=${newUserPos.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`
+          )
+          .then((response) => {
+            setUserLocation(response.data);
+            setData(response.data);
+          });
       },
       function (error) {
         switch (error.code) {
@@ -95,35 +106,19 @@ useEffect(() => {
         }
       }
     );
-    
-  
+
     setIsInformationLoading(false);
   }, []);
-
-
-  useEffect(() => {
-    const database = JSON.parse(localStorage.getItem("Data"));
-    if (database) {
-      setData(database);
-    }
-  }, []);
-
-useEffect(() => {
-    localStorage.setItem("Data", JSON.stringify(data));
-  }, [data]);
-
 
   useEffect(() => {
     localStorage.setItem("City", JSON.stringify(finnal));
   }, [finnal]);
 
-  
-
   return (
     <>
       <Header />
       <Navigation
-      userLocation={userLocation}
+        userLocation={userLocation}
         serchLocation={serchLocation}
         location={location}
         finnal={finnal}

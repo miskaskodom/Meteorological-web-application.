@@ -9,8 +9,7 @@ const CityList = ({ userLocation,finnal, currentCity, handleDelete }) => {
                 onClick={() => currentCity(userLocation.name)}
                 className="flex flex-row cursor-pointer hover:bg-[#33cec4e0] text-white  bg-[#33CEC3] p-2 justify-between border-b-4 border-[#00665E] rounded-2xl"
               >
-                {userLocation.name}
-                <button onClick={() => handleDelete(userLocation.name)}> X</button>
+                {userLocation.name} ★
               </div>
         {finnal.length > 0 &&
           finnal.map((City, index) => {
