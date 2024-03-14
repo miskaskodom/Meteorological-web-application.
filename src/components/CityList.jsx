@@ -2,7 +2,7 @@ import React from "react";
 
 const CityList = ({ finnal, currentCity, handleDelete }) => {
   return (
-    <div className=" w-96 bg-[#00665E] mt-3 rounded-2xl">
+    <div className=" w-96 bg-[#00665E] mt-8 rounded-2xl">
       <h1 className="text-white">Saved location</h1>
       <div className=" w-96 h-max p-4">
         {finnal.length > 0 &&

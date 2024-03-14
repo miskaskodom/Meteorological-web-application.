@@ -251,10 +251,10 @@ const AddCity = ({ setLocation, addNewCity, location }) => {
   ]);
 
   return (
-    <div className="flex flex-row mt-2">
+    <div className="flex flex-row mt-6 pl-6">
       <input
         value={location}
-        className="dive pl-4"
+        className="dive pl-4 "
         type="text"
         list="city"
         onChange={(event) => setLocation(event.target.value)}
@@ -267,7 +267,7 @@ const AddCity = ({ setLocation, addNewCity, location }) => {
       </datalist>
 
       <button
-        className=" text-3xl font-bold pl-5"
+        className=" text-3xl font-bold"
         onClick={() => {
           addNewCity();
         }}
@@ -278,7 +278,7 @@ const AddCity = ({ setLocation, addNewCity, location }) => {
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="w-9 h-14 hover:text-gray-600 "
+          className="w-10 h-14 hover:animate-pulse  hover:text-gray-600 "
         >
           <path
             strokeLinecap="round"

@@ -3,7 +3,7 @@ import React from "react";
 const Content = ({ data, weatherOption }) => {
   return (
     <div className="w-full h-full px-4 font-mono pt-3 bg-slate-200">
-      <div className="font-bold text-7xl drop h-20  bg-[#00665E] text-white rounded-3xl text-center items-center  shadow-lg shadow-[#1D766F]">
+      <div className="font-bold md:text-7xl text-4xl   h-20  bg-[#00665E] text-white rounded-3xl text-center items-center flex justify-center  shadow-lg shadow-[#1D766F]">
         {data.name}{" "}
       </div>
       <div className="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1   gap-9 pt-8 ">
@@ -23,7 +23,7 @@ const Content = ({ data, weatherOption }) => {
             </div>
           </div>
         </div>
-        <div className=" bg-[#00665E] text-white text-center rounded-3xl p-6 grid grid-cols-2 md:grid-cols-1 grid-rows-3 items-center justify-between gap-8 md:grid-rows-3 text-3xl shadow-lg shadow-[#1D766F] ">
+        <div className=" bg-[#00665E] text-white text-center rounded-3xl p-6 grid grid-cols-2 md:grid-cols-1 grid-rows-3 items-center justify-between gap-8 md:grid-rows-3 text-2xl md:3xl shadow-lg shadow-[#1D766F] ">
           <div className="md:flex md:flex-row bg-[#33CEC3] text-white p-3 rounded-2xl shadow-inner shadow-[#1D766F]">
             Feels like{" "}
             {data.main ? (
@@ -42,7 +42,7 @@ const Content = ({ data, weatherOption }) => {
               weatherOption.presure ? "hidden" : ""
             } md:hidden bg-[#33CEC3] text-white p-3 rounded-2xl shadow-inner shadow-[#1D766F]`}
           >
-            {data.main ? <p>&nbsp;{data.main.pressure - 260} mmHg</p> : null}
+           Pressure{" "} {data.main ? <p>&nbsp;{data.main.pressure - 260} mmHg</p> : null}
           </div>
           <div
             className={` ${
@@ -73,14 +73,15 @@ const Content = ({ data, weatherOption }) => {
           weatherOption.presure
             ? "md:hidden"
             : ""
-        }  bg-[#00665E] text-3xl w-full h-20 mt-8  p-6 gap-9 hidden md:flex flex-row justify-between  text-center items-center shadow-lg shadow-[#1D766F] rounded-3xl `}
+        }  bg-[#00665E] text-2xl w-full h-20 mt-8  p-6 gap-9 hidden md:flex flex-row justify-between  text-center items-center shadow-lg shadow-[#1D766F] rounded-3xl `}
       >
         <div
           className={` ${
             weatherOption.presure ? "md:hidden" : ""
           } hidden md:flex bg-[#33CEC3] text-white p-3 rounded-2xl shadow-inner shadow-[#1D766F]`}
         >
-          {data.main ? <p>&nbsp;{data.main.pressure - 260} mmHg</p> : null}
+        
+        Pressure{' '} {data.main ? <p>&nbsp;{data.main.pressure - 260} mmHg</p> : null}
         </div>
         <div
           className={` ${

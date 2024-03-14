@@ -6,7 +6,7 @@ import axios from "axios";
 import Loader from "../components/UI/Loader.jsx";
 
 function WeatherAppPage() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [finnal, setFinnal] = useState([]);
   const [location, setLocation] = useState("");
   const [weatherOption, setWeatherOption] = useState({
@@ -53,17 +53,29 @@ function WeatherAppPage() {
 
   useEffect(() => {
     const city = JSON.parse(localStorage.getItem("City"));
-    console.log(city);
     if (city) {
       setFinnal(city);
     } else {
-      setFinnal(["Nothing here"]);
+      setFinnal(data.name);
+    }
+  }, []);
+
+  
+  useEffect(() => {
+    const database = JSON.parse(localStorage.getItem("Data"));
+    if (database) {
+      setData(database);
     }
   }, []);
 
 useEffect(() => {
+    localStorage.setItem("Data", JSON.stringify(data));
+  }, [data]);
+
+
+
+useEffect(() => {
     setIsInformationLoading(true);
-    
     navigator.geolocation.getCurrentPosition(
       function (position) {
        const  newUserPos = {
@@ -91,6 +103,7 @@ useEffect(() => {
         }
       }
     );
+    
   
     setIsInformationLoading(false);
   }, []);

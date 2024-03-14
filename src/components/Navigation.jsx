@@ -47,13 +47,13 @@ const Navigation = ({
   };
 
   return (
-    <div className=" w-full h-20 flex flex-row items-center justify-between bg-slate-200 px-4 ">
+    <div className=" w-full h-20 flex flex-row items-center justify-between bg-slate-200  ">
       <button
         className="dive "
         onClick={() => setOpen({ ...open, first: true })}
       >
         <img src={mark} />
-        <p className="p-2">Add city </p>
+        <p >Add city </p>
       </button>
 
       <ModalSettings
@@ -62,16 +62,16 @@ const Navigation = ({
       >
         <>
           <div className="text-center w-96 h-72  flex flex-col items-start font-mono text-2xl">
-            <h1 className=" text-3xl font-bold pl-12 ">Add new location</h1>
+            <h1 className=" text-3xl font-bold pl-12 mt-10 ">Add new location</h1>
             <AddCity
               location={location}
               setLocation={setLocation}
               addNewCity={addNewCity}
             />
 
-            <div className=" pt-4">
+            <div className=" pt-4 pl-6 mt-10">
               <input
-                className="dive w-96"
+                className="dive w-80"
                 value={searchQuary}
                 onChange={(e) => setSearchQuary(e.target.value)}
                 type="text"
