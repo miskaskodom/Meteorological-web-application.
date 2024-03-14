@@ -37,9 +37,7 @@ function WeatherAppPage() {
 
   const whatLocation = () => {
     console.log(cords)
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${cords.lat}&lon=${cords.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
-      setData(response.data);
-    });
+    
   }
 
   useEffect(() => {
@@ -79,9 +77,10 @@ useEffect(() => {
         long: position.coords.longitude,
        };
           console.log(newUserPos)
-          setCords(newUserPos)
-          console.log(cords)
-          whatLocation()
+          axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${newUserPos.lat}&lon=${newUserPos.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
+            console.log(response.data)
+      setData(response.data);
+    });
       },
       function (error) {
         switch (error.code) {
