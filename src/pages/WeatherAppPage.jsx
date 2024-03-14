@@ -6,7 +6,6 @@ import axios from "axios";
 import Loader from "../components/UI/Loader.jsx";
 
 function WeatherAppPage() {
-  const [cords, setCords] = useState({lat:null, long: null});
   const [data, setData] = useState([]);
   const [finnal, setFinnal] = useState([]);
   const [location, setLocation] = useState("");
@@ -34,11 +33,6 @@ function WeatherAppPage() {
         setData(response.data);
       });
   };
-
-  const whatLocation = () => {
-    console.log(cords)
-    
-  }
 
   useEffect(() => {
     const storedSettings = JSON.parse(localStorage.getItem("Settings"));
@@ -76,9 +70,7 @@ useEffect(() => {
         lat: position.coords.latitude,
         long: position.coords.longitude,
        };
-          console.log(newUserPos)
           axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${newUserPos.lat}&lon=${newUserPos.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
-            console.log(response.data)
       setData(response.data);
     });
       },
