@@ -78,8 +78,9 @@ useEffect(() => {
         lat: position.coords.latitude,
         long: position.coords.longitude,
        };
-    
+          console.log(newUserPos)
           setCords(newUserPos)
+          console.log(cords)
           whatLocation()
       },
       function (error) {
