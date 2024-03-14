@@ -62,16 +62,6 @@ function WeatherAppPage() {
   }, []);
 
   
-  useEffect(() => {
-    const database = JSON.parse(localStorage.getItem("Data"));
-    if (database) {
-      setData(database);
-    }
-  }, []);
-
-useEffect(() => {
-    localStorage.setItem("Data", JSON.stringify(data));
-  }, [data]);
 
 
 
@@ -111,6 +101,16 @@ useEffect(() => {
   }, []);
 
 
+  useEffect(() => {
+    const database = JSON.parse(localStorage.getItem("Data"));
+    if (database) {
+      setData(database);
+    }
+  }, []);
+
+useEffect(() => {
+    localStorage.setItem("Data", JSON.stringify(data));
+  }, [data]);
 
 
   useEffect(() => {
