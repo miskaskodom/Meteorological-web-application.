@@ -9,6 +9,7 @@ import AddCity from "./AddCity.jsx";
 import { Link } from "react-router-dom";
 
 const Navigation = ({
+  userLocation,
   serchLocation,
   finnal,
   location,
@@ -79,6 +80,7 @@ const Navigation = ({
               />
             </div>
             <CityList
+            userLocation={userLocation}
               finnal={searchedCity}
               currentCity={currentCity}
               handleDelete={handleDelete}

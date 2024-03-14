@@ -7,6 +7,7 @@ import Loader from "../components/UI/Loader.jsx";
 
 function WeatherAppPage() {
   const [data, setData] = useState({});
+  const [userLocation, setUserLocation] = useState({});
   const [finnal, setFinnal] = useState([]);
   const [location, setLocation] = useState("");
   const [weatherOption, setWeatherOption] = useState({
@@ -56,7 +57,7 @@ function WeatherAppPage() {
     if (city) {
       setFinnal(city);
     } else {
-      setFinnal(data.name);
+      setFinnal(["Add your location"]);
     }
   }, []);
 
@@ -84,6 +85,7 @@ useEffect(() => {
        };
           axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${newUserPos.lat}&lon=${newUserPos.long}&appid=9eecc962315d7d019a25cb291a4e5b3a`).then((response) => {
       setData(response.data);
+      setUserLocation(response.data);
     });
       },
       function (error) {
@@ -121,6 +123,7 @@ useEffect(() => {
     <>
       <Header />
       <Navigation
+      userLocation={userLocation}
         serchLocation={serchLocation}
         location={location}
         finnal={finnal}
